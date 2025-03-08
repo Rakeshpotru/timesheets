@@ -1,14 +1,14 @@
 // /services/authService.js
 import axios from 'axios';
+import { API_URLS } from '../apicalls/apis';
 
-const API_URL = 'https://your-api-url.com/api'; // Replace with your backend API URL
 
-// Function to log in a user
+
 export const loginUser = async (credentials) => {
   try {
-    const response = await axios.post(`${API_URL}/auth/login`, credentials);
+    const response = await axios.post(`${API_URLS.LOGIN_API_URL}`, credentials);
+    console.log(response)
     if (response.data.token) {
-      // Store token in local storage or cookie (or other storage)
       localStorage.setItem('authToken', response.data.token);
       return { success: true, token: response.data.token };
     }
@@ -18,14 +18,20 @@ export const loginUser = async (credentials) => {
     return { success: false, message: 'An error occurred' };
   }
 };
-
-// Function to check if the user is authenticated (based on stored token)
+export const registerUser = async ({ username, password, email }) => {
+  try {
+    const response = await axios.post(`${API_URLS.REGISTER_API_URL}`, { username, password, email });
+    return { success: true, message: 'User registered successfully' };
+  } catch (error) {
+    return { success: false, message: error.response.data.message };
+  }
+};
 export const isAuthenticated = () => {
   const token = localStorage.getItem('authToken');
-  return token ? true : false; // You can also validate token expiry here
+  return token ? true : false;
 };
 
-// Function to log out a user
+
 export const logoutUser = () => {
   localStorage.removeItem('authToken');
 };

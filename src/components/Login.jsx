@@ -1,19 +1,33 @@
 import React, { useState } from 'react';
-// import { useHistory } from 'react-router-dom';
-import { loginUser } from '../services/authService';
+import { useNavigate } from 'react-router-dom';
+import { loginUser, registerUser } from '../services/authService';
 
-function Login ()  {
+function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-//   const history = useHistory();
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleLogin = async () => {
     const response = await loginUser({ username, password });
     if (response.success) {
-      history.push('/dashboard');
+      navigate('/dashboard');  // Redirect to dashboard on successful login
     } else {
-      alert('Invalid credentials');
+      setError('Invalid credentials. Would you like to register?');
     }
+  };
+
+  const handleRegister = async () => {
+    // const email = prompt("Please enter your email:");
+    navigate('/register'); 
+    // const response = await registerUser({ username, password, email });
+
+    // if (response.success) {
+    //   alert('Registration successful, you can now login.');
+    //   setError('');
+    // } else {
+    //   setError('Registration failed. Please try again.');
+    // }
   };
 
   return (
@@ -32,6 +46,13 @@ function Login ()  {
         onChange={(e) => setPassword(e.target.value)} 
       />
       <button onClick={handleLogin}>Login</button>
+      
+      {error && (
+        <div>
+          <p>{error}</p>
+          <button onClick={handleRegister}>Register</button>
+        </div>
+      )}
     </div>
   );
 };
