@@ -8,8 +8,7 @@ const App = () => {
   return (
     <Router>
       <Routes>
-      {/* <Route path="/" exact component={Login} /> */}
-        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard/>} />
         <Route path="/timesheet" element={<TimesheetForm/>} />
         
