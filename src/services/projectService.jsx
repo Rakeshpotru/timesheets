@@ -3,7 +3,6 @@ import axios from 'axios';
 
 const API_URL = 'https://your-api-url.com/api'; // Replace with your backend API URL
 
-// Function to fetch all projects
 export const getProjects = async () => {
   try {
     const response = await axios.get(`${API_URL}/projects`);
@@ -44,5 +43,14 @@ export const updateProject = async (projectId, updatedData) => {
   } catch (error) {
     console.error('Error updating project:', error);
     return null; // Return null if updating the project fails
+  }
+};
+export const addProject = async (projectData) => {
+  try {
+    const response = await axios.post(`${API_URL}/projects`, projectData);  // POST request to add a new project
+    return { success: true, data: response.data };
+  } catch (error) {
+    console.error('Error adding project:', error);
+    return { success: false, message: 'Failed to add project' };
   }
 };
