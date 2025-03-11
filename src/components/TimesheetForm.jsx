@@ -9,6 +9,7 @@ function TimesheetForm ()  {
   const [hoursWorked, setHoursWorked] = useState('');
   const [project, setProject] = useState('');
   const [description, setDescription] = useState('');
+  employee_id=localStorage.getItem('employee_id')
 
   useEffect(() => {
     const fetchProjects = async () => {
