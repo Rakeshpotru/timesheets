@@ -12,8 +12,8 @@ function Project() {
     e.preventDefault();
     
     const projectData = {
-      name: projectName,
-      description: projectDescription,
+      project_name: projectName,
+      project_description: projectDescription,
       startDate,
       endDate,
     };
