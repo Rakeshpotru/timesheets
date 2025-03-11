@@ -3,13 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import { loginUser, registerUser } from '../services/authService';
 
 function Login() {
-  const [username, setUsername] = useState('');
+  const [email, setemail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
   const handleLogin = async () => {
-    const response = await loginUser({ username, password });
+    const response = await loginUser({ email, password });
     if (response.success) {
       navigate('/dashboard');  // Redirect to dashboard on successful login
     } else {
@@ -20,7 +20,7 @@ function Login() {
   const handleRegister = async () => {
     // const email = prompt("Please enter your email:");
     navigate('/register'); 
-    // const response = await registerUser({ username, password, email });
+    // const response = await registerUser({ email, password, email });
 
     // if (response.success) {
     //   alert('Registration successful, you can now login.');
@@ -35,9 +35,9 @@ function Login() {
       <h2>Employee Login</h2>
       <input 
         type="text" 
-        placeholder="Username" 
-        value={username} 
-        onChange={(e) => setUsername(e.target.value)} 
+        placeholder="email" 
+        value={email} 
+        onChange={(e) => setemail(e.target.value)} 
       />
       <input 
         type="password" 

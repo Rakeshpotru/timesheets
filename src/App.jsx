@@ -8,6 +8,7 @@ import Header from './header/Header';
 import Home from './components/Home';
 import ProjectList from './components/ProjectList';
 import Project from './components/Project';
+import AddEmployee from './components/AddEmployee';
 const App = () => {
   return (
     <Router>
@@ -21,7 +22,7 @@ const App = () => {
         <Route path="/register" element={<Register/>} /> 
         <Route path="/projects" element={<ProjectList />} />
         <Route path="/add-project" element={<Project />} />
-        
+        <Route path='/add-employee' element={<AddEmployee/>}/>
         
       </Routes>
       </div>

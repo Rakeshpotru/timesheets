@@ -26,6 +26,14 @@ export const registerUser = async ({ username, password, email }) => {
     return { success: false, message: error.response.data.message };
   }
 };
+export const registerEmployee = async ({ first_name, last_name, email,password,department,position,hire_date,status }) => {
+  try {
+    const responseregister = await axios.post(`${API_URLS.ADDEMPLOYEE_API_URL}`, { first_name, last_name, email,password ,department,position,hire_date,status});
+    return { success: true, message: 'Employee Added successfully' };
+  } catch (error) {
+    return { success: false, message: error.response.data.message };
+  }
+};
 export const isAuthenticated = () => {
   const token = localStorage.getItem('authToken');
   return token ? true : false;

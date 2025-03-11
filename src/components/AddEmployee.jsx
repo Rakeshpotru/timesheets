@@ -1,37 +1,45 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { registerEmployee } from '../services/authService';
+import { useNavigate } from 'react-router-dom';
 
 const AddEmployee = () => {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
+  const [first_name, setFirstName] = useState('');
+  const [last_name, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [department, setDepartment] = useState('');
   const [position, setPosition] = useState('');
-  const [hireDate, setHireDate] = useState('');
+  const [hire_date, setHireDate] = useState('');
   const [status, setStatus] = useState('active');
   const [message, setMessage] = useState('');
+    const navigate = useNavigate();
+
 
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const employeeData = {
-      first_name: firstName,
-      last_name: lastName,
+      first_name: first_name,
+      last_name: last_name,
       email: email,
       password:password,
       department: department,
       position: position,
-      hire_date: hireDate,
+      hire_date: hire_date,
       status: status,
     };
 
     try {
-      // Replace with your API Gateway URL
-      const response = await axios.post('YOUR_API_GATEWAY_URL/employees', employeeData);
-      setMessage('Employee added successfully!');
-      // Optionally clear form fields after successful submission
+       const response = await registerEmployee({first_name, last_name, email,password,department,position,hire_date,status});
+       if (response.success) {
+        setMessage('Employee added successfully!');
+        navigate('/dashboard');  // Redirect to login page
+      } else {
+        alert(response.message);
+      }
+      
       setFirstName('');
       setLastName('');
       setEmail('');
@@ -48,12 +56,12 @@ const AddEmployee = () => {
   return (
     <div>
       <h1>Add New Employee</h1>
-      <form onSubmit={handleSubmit}>
+      <form>
         <label>
           First Name:
           <input
             type="text"
-            value={firstName}
+            value={first_name}
             onChange={(e) => setFirstName(e.target.value)}
             required
           />
@@ -63,14 +71,14 @@ const AddEmployee = () => {
           Last Name:
           <input
             type="text"
-            value={lastName}
+            value={last_name}
             onChange={(e) => setLastName(e.target.value)}
             required
           />
         </label>
         <br />
         <label>
-          Email:
+          email:
           <input
             type="email"
             value={email}
@@ -113,7 +121,7 @@ const AddEmployee = () => {
           Hire Date:
           <input
             type="date"
-            value={hireDate}
+            value={hire_date}
             onChange={(e) => setHireDate(e.target.value)}
             required
           />
@@ -131,7 +139,8 @@ const AddEmployee = () => {
           </select>
         </label>
         <br />
-        <button type="submit">Add Employee</button>
+        <button onClick={handleSubmit}>Register</button>
+
       </form>
       {message && <p>{message}</p>}
     </div>

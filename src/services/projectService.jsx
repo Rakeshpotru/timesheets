@@ -5,7 +5,7 @@ const API_URL = 'https://your-api-url.com/api'; // Replace with your backend API
 
 export const getProjects = async () => {
   try {
-    const response = await axios.get(`${API_URL}/projects`);
+    const response = await axios.get(`${API_URL}`);
     return response.data; // Returns the list of projects
   } catch (error) {
     console.error('Error fetching projects:', error);

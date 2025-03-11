@@ -24,6 +24,9 @@ function Header() {
           <li style={listStyle}>
             <Link to="/add-project" style={linkStyle}>Add Project</Link>
           </li>
+          <li style={listStyle}>
+            <Link to="/add-employee" style={linkStyle}>Add Employee</Link>
+          </li>
         </ul>
       </nav>
     </header>
