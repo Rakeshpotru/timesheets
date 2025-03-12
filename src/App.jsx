@@ -11,22 +11,11 @@ import Project from './components/Project';
 import AddEmployee from './components/AddEmployee';
 const App = () => {
   return (
-    <Router>
-       <Header />
+
        <div>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard/>} />
-        <Route path="/timesheet" element={<TimesheetForm/>} />
-        <Route path="/register" element={<Register/>} /> 
-        <Route path="/projects" element={<ProjectList />} />
-        <Route path="/add-project" element={<Project />} />
-        <Route path='/add-employee' element={<AddEmployee/>}/>
-        
-      </Routes>
+  <h1>react app</h1>
       </div>
-    </Router>
+
   );
 };
 
