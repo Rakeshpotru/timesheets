@@ -26,13 +26,13 @@ function Header() {
             <Link to="/add-employee" style={linkStyle}>Employees</Link>
           </li>
           <li style={listStyle}>
-            <Link to="/timesheet" style={linkStyle}>Timesheet</Link>
+            <Link to="/timesheetList" style={linkStyle}>Timesheet</Link>
           </li>
           <li style={listStyle}>
             <Link to="/login" style={linkStyle}>Login</Link>
           </li>
           <li>
-            <Link to="/timeSheetsemp" style={linkStyle}> Fill Timesheets</Link>
+            <Link to="/add-timeSheetsemp" style={linkStyle}> Fill Timesheets</Link>
           </li>
         </ul>
       </nav>

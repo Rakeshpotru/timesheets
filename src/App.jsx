@@ -11,6 +11,7 @@ import Home from './components/Home';
 import ProjectList from './components/ProjectList';
 import Project from './components/Project';
 import AddEmployee from './components/AddEmployee';
+import TimesheetList from './components/TimesheetList'
 const App = () => {
   return (
     <Router>
@@ -20,7 +21,8 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard/>} />
-        <Route path="/timesheet" element={<TimesheetForm/>} />
+        <Route path="/add-timeSheetsemp" element={<TimesheetForm/>} />
+        <Route path="timesheetList" element={<TimesheetList/>}/>
         <Route path="/register" element={<Register/>} /> 
         <Route path="/projects" element={<ProjectList />} />
         <Route path="/add-project" element={<Project />} />

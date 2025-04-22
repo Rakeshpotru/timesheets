@@ -7,7 +7,8 @@ function TimesheetList  ()  {
   useEffect(() => {
     const fetchTimesheets = async () => {
       const data = await getTimesheets();
-      setTimesheets(data);
+      console.log(data,'timesheetsdata')
+      setTimesheets(data.timesheets);
     };
     fetchTimesheets();
   }, []);
@@ -20,8 +21,8 @@ function TimesheetList  ()  {
           <li key={timesheet.id}>
             <p>{timesheet.date}</p>
             <p>{timesheet.hoursWorked} hours</p>
-            <p>Project: {timesheet.projectName}</p>
-            <p>Description: {timesheet.description}</p>
+            <p>Project: {timesheet.project_name}</p>
+            <p>Employee: {timesheet.employee_id}</p>
           </li>
         ))}
       </ul>

@@ -22,11 +22,20 @@ export const addTimesheet = async (timesheetData) => {
 // Function to fetch all timesheets (Admin view or personal view for users)
 export const getTimesheets = async () => {
   try {
-    const response = await axios.get(`${API_URL}/timesheets`, {
+    const token = localStorage.getItem('token'); // Retrieve the token from localStorage
+
+    // Check if token exists
+    if (!token) {
+      console.error('No authentication token found.');
+      return [];
+    }
+
+    const response = await axios.get(`${API_URLS.Listoftimesheets}`, {
       headers: {
-        Authorization: `Bearer ${localStorage.getItem('authToken')}`,
+        Authorization: `Bearer ${token}`, // Send the token in the header
       },
     });
+
     return response.data; // Returns the list of timesheets
   } catch (error) {
     console.error('Error fetching timesheets:', error);
@@ -34,6 +43,16 @@ export const getTimesheets = async () => {
   }
 };
 
+
+export const getTimesheets1 = async () => {
+  try {
+    const response = await axios.get(`${API_URLS.Listoftimesheets}`);
+    return response.data; // Returns the list of projects
+  } catch (error) {
+    console.error('Error fetching projects:', error);
+    return []; // Return empty array if there's an error
+  }
+};
 // Function to fetch a specific timesheet by ID (optional)
 export const getTimesheetById = async (timesheetId) => {
   try {
