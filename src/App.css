@@ -1,7 +1,5 @@
 #root {
   max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
   text-align: center;
 }
 
@@ -16,6 +14,24 @@
 }
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
+}
+body{
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background: linear-gradient(90deg, #ecf1f9, #e5ebf7, #dee5f6, #d8def4, #d4daf3, #d2d9f3, #d0d8f4, #ced7f4);
+}
+header{
+  /* background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 80, 121, 1) 35%, rgba(0, 212, 255, 1) 100%); */
+  background: #fff;
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.75);
+    padding: 6px 3px 6px 3px;
+}
+nav .bg_gradient li a{
+  color: #000;
+}
+nav .bg_gradient li a:hover{
+ color: #55d22f;
 }
 
 @keyframes logo-spin {
@@ -39,4 +55,81 @@
 
 .read-the-docs {
   color: #888;
+}
+
+
+/* --------------------------------------------------- */
+/* Page Background */
+.home-container {
+  font-family: Arial, sans-serif;
+  color: #ffffff;
+  background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
+  padding: 20px;
+  overflow: hidden;
+}
+
+/* Hero Section */
+.hero-section {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: bold;
+  background-image: linear-gradient(to right, #ff7e5f, #feb47b, #85d8ce);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  margin-top: 10px;
+  color: #e0e0e0;
+}
+
+/* Split Section */
+.split-section {
+  display: flex;
+  align-items: center;
+  margin: 50px 0;
+  gap: 20px;
+}
+
+.split-section.reverse {
+  flex-direction: row-reverse;
+}
+
+.section-image {
+  width: 50%;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.section-text {
+  width: 50%;
+  text-align: left;
+}
+
+.section-text h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #feb47b;
+}
+
+.section-text p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #e0e0e0;
+}
+
+/* Full-Width Image */
+.full-width-image-container {
+  margin: 50px 0;
+}
+
+.full-width-image {
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
