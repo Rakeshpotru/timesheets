@@ -3,4 +3,5 @@ export const API_URLS = {
     REGISTER_API_URL:'https://3fj3uno4tb.execute-api.us-east-1.amazonaws.com/Registration',
     ADDEMPLOYEE_API_URL:"https://oc6aiyt844.execute-api.us-east-1.amazonaws.com/AddEmployee",
     ADDTIMESHEETS_API_URL:"https://vpahj6fmbk.execute-api.us-east-1.amazonaws.com/Timesheets",
+    ListOfProjects:"https://u1pdqb23w3.execute-api.us-east-1.amazonaws.com/Listofprojects",
 }

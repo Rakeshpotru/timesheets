@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 // import { getProjects } from '../services/projectService';
-// import { addTimesheet } from '../services/timesheetService';
+import { addTimesheet } from '../services/timesheetService';
 import dayjs from 'dayjs';
 
 function TimesheetForm ()  {
@@ -9,21 +9,23 @@ function TimesheetForm ()  {
   const [hoursWorked, setHoursWorked] = useState('');
   const [project, setProject] = useState('');
   const [description, setDescription] = useState('');
-  employee_id=localStorage.getItem('employee_id')
+  const employee_id=Number(localStorage.getItem('employee_id'))|0
 
-  useEffect(() => {
-    const fetchProjects = async () => {
-      const data = await getProjects();
-      setProjects(data);
-    };
-    fetchProjects();
-  }, []);
+  // useEffect(() => {
+  //   const fetchProjects = async () => {
+  //     const data = await getProjects();
+  //     setProjects(data);
+  //   };
+  //   fetchProjects();
+  // }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const timesheetData = { date, hoursWorked, project, description };
+    let hours_worked=Number(hoursWorked)
+    const timesheetData = { date, hours_worked, employee_id };
     const response = await addTimesheet(timesheetData);
-    if (response.success) {
+    console.log(response,'timesheetslog')
+    if (response.message) {
       alert('Timesheet entry added!');
     } else {
       alert('Error submitting timesheet.');
@@ -44,18 +46,18 @@ function TimesheetForm ()  {
         value={hoursWorked}
         onChange={(e) => setHoursWorked(e.target.value)} 
       />
-      <label>Project:</label>
+      {/* <label>Project:</label>
       <select value={project} onChange={(e) => setProject(e.target.value)}>
         <option value="">Select a project</option>
         {projects.map((p) => (
           <option key={p.id} value={p.id}>{p.name}</option>
         ))}
-      </select>
-      <label>Description:</label>
+      </select> */}
+      {/* <label>Description:</label>
       <textarea 
         value={description}
         onChange={(e) => setDescription(e.target.value)} 
-      />
+      /> */}
       <button type="submit">Log Hours</button>
     </form>
   );

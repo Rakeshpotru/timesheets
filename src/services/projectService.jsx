@@ -1,11 +1,11 @@
 // /services/projectService.js
 import axios from 'axios';
+import { API_URLS } from '../apicalls/apis';
 
-const API_URL = 'https://your-api-url.com/api'; // Replace with your backend API URL
 
 export const getProjects = async () => {
   try {
-    const response = await axios.get(`${API_URL}`);
+    const response = await axios.get(`${API_URLS.ListOfProjects}`);
     return response.data; // Returns the list of projects
   } catch (error) {
     console.error('Error fetching projects:', error);
@@ -16,7 +16,7 @@ export const getProjects = async () => {
 // Function to fetch a single project by ID (optional)
 export const getProjectById = async (projectId) => {
   try {
-    const response = await axios.get(`${API_URL}/projects/${projectId}`);
+    const response = await axios.get(`${API_URLS}/projects/${projectId}`);
     return response.data; // Returns the project details
   } catch (error) {
     console.error('Error fetching project:', error);

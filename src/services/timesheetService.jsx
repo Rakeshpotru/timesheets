@@ -1,12 +1,13 @@
 // /services/timesheetService.js
 import axios from 'axios';
+import { API_URLS } from '../apicalls/apis';
 
-const API_URL = 'https://your-api-url.com/api'; // Replace with your backend API URL
 
 // Function to add a new timesheet entry
 export const addTimesheet = async (timesheetData) => {
+  console.log(timesheetData,'data')
   try {
-    const response = await axios.post(`${API_URL}/timesheets`, timesheetData, {
+    const response = await axios.post(`${API_URLS.ADDTIMESHEETS_API_URL}`, timesheetData, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('authToken')}`, // Include token for authentication
       },
