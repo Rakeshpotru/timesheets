@@ -1,9 +1,16 @@
 import { link } from 'framer-motion/client';
 import React from 'react';
-import { Link } from 'react-router-dom'; // Import Link for routing
+import { Link,useNavigate } from 'react-router-dom'; // Import Link for routing
 
 
 function Header() {
+  const navigate = useNavigate();
+
+  const handleLogout = (e) => {
+    e.preventDefault();   // keep link from immediately navigating
+    localStorage.clear(); // clear storage
+    navigate("/login");   // now navigate away
+  };
   return (
     <header >
       <nav>
@@ -11,11 +18,11 @@ function Header() {
           <li style={listStyle}>
             <Link to="/" style={linkStyle}>Home</Link>
           </li>
-          
+
           <li style={listStyle}>
             <Link to="/dashboard" style={linkStyle}>Dashboard</Link>
           </li>
-          
+
           <li style={listStyle}>
             <Link to="/projects" style={linkStyle}>List of Projects</Link>
           </li>
@@ -34,6 +41,14 @@ function Header() {
           <li style={listStyle}>
             <Link to="/add-timeSheetsemp" style={linkStyle}> Fill Timesheets</Link>
           </li>
+          <li
+          style={listStyle}
+            role="button"
+            tabIndex={0}
+            onClick={handleLogout}
+          >
+            <span>Logout</span>
+          </li>
         </ul>
       </nav>
     </header>
@@ -46,7 +61,7 @@ const navStyle = {
   justifyContent: 'space-around',
   padding: '10px',
   margin: '0', // Remove default margins
-  
+
 };
 
 const listStyle = {
