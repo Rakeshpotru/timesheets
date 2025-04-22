@@ -31,7 +31,7 @@ function Header() {
           <li style={listStyle}>
             <Link to="/login" style={linkStyle}>Login</Link>
           </li>
-          <li>
+          <li style={listStyle}>
             <Link to="/add-timeSheetsemp" style={linkStyle}> Fill Timesheets</Link>
           </li>
         </ul>

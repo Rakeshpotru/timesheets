@@ -47,7 +47,7 @@ export const updateProject = async (projectId, updatedData) => {
 };
 export const addProject = async (projectData) => {
   try {
-    const response = await axios.post(`${API_URL}/projects`, projectData);  // POST request to add a new project
+    const response = await axios.post(`${API_URLS}`, projectData);  // POST request to add a new project
     return { success: true, data: response.data };
   } catch (error) {
     console.error('Error adding project:', error);
