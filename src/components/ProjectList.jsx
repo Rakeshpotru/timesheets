@@ -6,6 +6,7 @@ import { getProjects } from '../services/projectService'; // Assuming this is yo
 const fetcher = async () => {
   const response = await getProjects();
   if (response && response.projects) {
+    console.log(response, 'response')
     return response.projects;  // Return the projects array
   } else {
     throw new Error('Failed to fetch projects');
@@ -26,7 +27,34 @@ function ProjectList() {
   return (
     <div>
       <h1>Project List</h1>
-      {projects && projects.length > 0 ? (
+      <table>
+        <thead>
+          <tr>
+            <th>project name</th>
+            <th>Project Description</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+          </tr>
+        </thead>
+        <tbody>
+        {/* description
+end_date
+project_id
+
+project_name
+start_date */}
+          {projects.map((projects) => (
+            <tr key={projects.project_id}>
+              <td>{ projects.project_name}</td>
+              <td>{projects.description}</td>
+              <td>{projects.start_date}</td>
+              <td>{projects.end_date}</td>
+
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      {/* {projects && projects.length > 0 ? (
         <ul>
           {projects.map((project) => (
             <li key={project.project_id}>
@@ -37,7 +65,7 @@ function ProjectList() {
         </ul>
       ) : (
         <p>No projects available.</p>
-      )}
+      )} */}
     </div>
   );
 }

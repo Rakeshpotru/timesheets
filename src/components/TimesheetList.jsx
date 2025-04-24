@@ -15,19 +15,31 @@ function TimesheetList  ()  {
 
   return (
     <div>
-      <h2>Your Timesheets</h2>
-      <ul>
-        {timesheets.map((timesheet) => (
-          <li key={timesheet.id}>
-            <p>{timesheet.date}</p>
-            <p>{timesheet.hoursWorked} hours</p>
-            <p>Project: {timesheet.project_name}</p>
-            <p>Employee: {timesheet.employee_id}</p>
-          </li>
-        ))}
-      </ul>
-    </div>
+  <h2>Your Timesheets</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Hours Worked</th>
+        <th>Project</th>
+        <th>Employee ID</th>
+      </tr>
+    </thead>
+    <tbody>
+      {timesheets.map((timesheet) => (
+        <tr key={timesheet.id}>
+          <td>{timesheet.date}</td>
+          <td>{timesheet.hours_worked}</td>
+          <td>{timesheet.project_name}</td>
+          <td>{timesheet.employee_id}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
   );
 };
+
 
 export default TimesheetList;
