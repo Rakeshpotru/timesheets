@@ -47,7 +47,7 @@ function Header() {
             tabIndex={0}
             onClick={handleLogout}
           >
-            <span>Logout</span>
+            <Link style={linkStyle}>Logout</Link>
           </li>
         </ul>
       </nav>
