@@ -5,7 +5,18 @@ import { API_URLS } from '../apicalls/apis';
 
 export const getProjects = async () => {
   try {
-    const response = await axios.get(`${API_URLS.ListOfProjects}`);
+    const token = localStorage.getItem('token'); // Retrieve the token from localStorage
+    console.log(token)
+    // Check if token exists
+    if (!token) {
+      console.error('No authentication token found.');
+      return [];
+    }
+    const response = await axios.get(`${API_URLS.ListOfProjects}`,{
+      headers: {
+        Authorization: `Bearer ${token}`, // Send the token in the header
+      },
+    });
     return response.data; // Returns the list of projects
   } catch (error) {
     console.error('Error fetching projects:', error);
