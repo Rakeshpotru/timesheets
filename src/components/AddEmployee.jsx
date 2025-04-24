@@ -55,7 +55,8 @@ const AddEmployee = () => {
 
   return (
     <div>
-      <h1>Add New Employee</h1>
+      <h2>Add New Employee</h2>
+      <div className='add_employee'>
       <form>
         <label>
           First Name:
@@ -143,6 +144,8 @@ const AddEmployee = () => {
 
       </form>
       {message && <p>{message}</p>}
+      </div>
+     
     </div>
   );
 };

@@ -33,6 +33,7 @@ function Login() {
   return (
     <div>
       <h2>Employee Login</h2>
+      <div className='add_employee login_input'>
       <input 
         type="text" 
         placeholder="email" 
@@ -53,6 +54,7 @@ function Login() {
           <button onClick={handleRegister}>Register</button>
         </div>
       )}
+    </div>
     </div>
   );
 };
