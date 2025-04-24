@@ -1,10 +1,11 @@
 import { link } from 'framer-motion/client';
 import React from 'react';
-import { Link,useNavigate } from 'react-router-dom'; // Import Link for routing
+import { Link, useNavigate } from 'react-router-dom'; // Import Link for routing
 
 
 function Header() {
   const navigate = useNavigate();
+  const name = localStorage.getItem('employee_id')
 
   const handleLogout = (e) => {
     e.preventDefault();   // keep link from immediately navigating
@@ -36,19 +37,22 @@ function Header() {
             <Link to="/timesheetList" style={linkStyle}>Timesheet</Link>
           </li>
           <li style={listStyle}>
-            <Link to="/login" style={linkStyle}>Login</Link>
-          </li>
-          <li style={listStyle}>
             <Link to="/add-timeSheetsemp" style={linkStyle}> Fill Timesheets</Link>
           </li>
-          <li
-          style={listStyle}
-            role="button"
-            tabIndex={0}
-            onClick={handleLogout}
-          >
-            <Link style={linkStyle}>Logout</Link>
-          </li>
+          {name ?
+            <li
+              style={listStyle}
+              role="button"
+              tabIndex={0}
+              onClick={handleLogout}
+            >
+              <Link style={linkStyle}>Logout</Link>
+            </li>
+            :
+            <li style={listStyle}>
+              <Link to="/login" style={linkStyle}>Login</Link>
+            </li>
+          }
         </ul>
       </nav>
     </header>
