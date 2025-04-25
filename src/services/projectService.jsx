@@ -6,23 +6,36 @@ import { API_URLS } from '../apicalls/apis';
 export const getProjects = async () => {
   try {
     const token = localStorage.getItem('token'); // Retrieve the token from localStorage
-    console.log(token)
+    console.log(token);
+    
     // Check if token exists
     if (!token) {
       console.error('No authentication token found.');
       return [];
     }
-    const response = await axios.get(`${API_URLS.ListOfProjects}`,{
+
+    // Start measuring time
+    const startTime = performance.now();
+
+    const response = await axios.get(`${API_URLS.ListOfProjects}`, {
       headers: {
         Authorization: `Bearer ${token}`, // Send the token in the header
       },
     });
+
+    // End measuring time
+    const endTime = performance.now();
+    const responseTime = endTime - startTime;
+
+    console.log(`API response time: ${responseTime}ms`);
+
     return response.data; // Returns the list of projects
   } catch (error) {
     console.error('Error fetching projects:', error);
     return []; // Return empty array if there's an error
   }
 };
+
 
 // Function to fetch a single project by ID (optional)
 export const getProjectById = async (projectId) => {
